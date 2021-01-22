@@ -1,0 +1,279 @@
+<html>
+<head>
+  <script>
+
+  var palette_c1 = "";
+  var palette_c2 = "";
+  var image_fond = 4;
+  var nom_image_fond = ["motif_fond.jpg", "motif_fond2.jpg", "motif_fond3.jpg", "motif_fond4.jpg", "motif_fond5.jpg"];
+
+  function f_fond() {
+    image_fond = image_fond + 1;
+    if (image_fond === 5 ) {image_fond = 0;}
+    document.body.background = nom_image_fond[image_fond] ;
+  }
+  function f_couleurPersonnalisee() {
+    var palette_c1 = prompt('Veuillez choisir la couleur des titre (dans les standarts CSS)');
+    document.styleSheets[0].cssRules[2].style.color = palette_c1;
+    document.styleSheets[0].cssRules[6].style.backgroundColor = palette_c1;
+    var palette_c2 = prompt('Veuillez choisir la couleur des sous-titre (dans les standarts CSS)');
+    document.styleSheets[0].cssRules[3].style.color = palette_c2;
+    document.styleSheets[0].cssRules[10].style.backgroundColor = palette_c2;
+    document.styleSheets[0].cssRules[11].style.backgroundColor = palette_c2;
+  }
+  function f_couleurOriginal() {
+    document.styleSheets[0].cssRules[2].style.color = "#000055";
+    document.styleSheets[0].cssRules[6].style.backgroundColor = "#222";
+    document.styleSheets[0].cssRules[3].style.color = "#000077";
+    document.styleSheets[0].cssRules[10].style.backgroundColor = "#000055";
+    document.styleSheets[0].cssRules[11].style.backgroundColor = "#000055";
+  }
+  function Mouhahaaa() {
+    alert("Si vous êtes épileptique, veuillez rafraichir la page")
+    document.getElementById("test").innerHTML="NoOooOOoOoon !";
+    document.styleSheets[0].cssRules[17].style.height = "100%";
+    timerId = setInterval('argh()', 100);
+  }
+  function argh() {
+      document.styleSheets[0].cssRules[17].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
+      document.styleSheets[0].cssRules[5].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
+      document.styleSheets[0].cssRules[6].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
+      document.styleSheets[0].cssRules[3].style.color = "#" + String(Math.floor(Math.random()*1000000));
+      document.styleSheets[0].cssRules[2].style.color = "#" + String(Math.floor(Math.random()*1000000));
+      document.styleSheets[0].cssRules[10].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
+      document.styleSheets[0].cssRules[11].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
+  }
+
+
+  </script>
+<style>
+
+body {
+  margin: 0;
+  font-family: georgia, monospace, sans-serif;
+  background-size: 40%;
+}
+p {
+  margin-bottom: 0px;
+}
+h1 {
+  font-size:25px;
+  margin-left: 30px;
+  font-weight: bold;
+  color: #000055;
+}   /*ne pas bouger ou rajouter de classes ou balise au dessus*/
+h3 {
+  margin-left: 20px;
+  font-weight: bold;
+  color: #000077;
+}   /*ne pas bouger ou rajouter de classes ou balise au dessus*/
+img.bande {
+  background-size: cover;
+  height=100px
+}
+
+.article {
+  background-color: white;
+  padding: 40px;
+  margin: 10px 100px 40px;
+  border-radius: 20px;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #222;
+}/*barre de navigation*/
+  .item a, .dropdown a{
+    display: inline-block;
+    position: relative;
+    font-size: 20px;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 10px;
+  }
+  .dropdown a .contenu{
+    background-color: #f1f1f1;
+    color: black;
+  }
+  .item, .dropdown {
+    display: inline-block;
+    position: relative;
+  }
+  .item a:hover {/*quand on passe la souris sur une balise a de item*/
+    background-color: #000055;
+  }  /*10*/   /*ne pas bouger ou rajouter de classes ou balise au dessus*/
+  .dropdown a:hover {/*quand on passe la souris sur une balise a de dropdown*/
+    background-color: #000055;
+  }    /*ne pas bouger ou rajouter de classes ou balise au dessus*/
+  .contenu {
+    display:  none;
+    background-color: #f1f1f1;
+    color: black;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 10px;
+  }
+  .dropdown:hover > .contenu {/*quand on passe la souris sur contenu descendant de dropdown*/
+    position: absolute;
+    display: block;
+  }
+  .contenu a{
+    background-color: #f1f1f1;
+    color: black;
+    border-radius: 10px;
+    width: 77%;
+  }
+  .contenu a:hover {/*quand on passe la souris sur une balise a de contenu*/
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+  }
+  .contenu > .dropdown > .contenu{
+    right: 83px;
+    /*left: 0;*/
+    top: 0;
+  }/*si quelqu'un arrive a positionner le deuxième contenu au bon endroit, qu'il me le dise*/
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 5px;
+  height: 20px;
+  box-shadow: 0px -5px 5px;
+  background-color:  #f1f1f1;
+  transition: height 1s, padding 1s;
+}
+.footer:hover {
+  padding: 16px;
+  height: 100px;
+}
+.mouhahaaa {            /*19*/
+  border-radius: 8px;
+  background-color: #ff9999;
+  float: right;
+  margin-right: 50px;
+  cursor: pointer;
+}
+.mouhahaaa:hover {
+  transform: translate(-150px);
+}
+img.art {
+  height: 200px;
+}
+
+</style>
+</head>
+<link rel="icon" href="logo.png" />
+<body onload="f_fond()" >
+<p style="margin-bottom: 0px;"><img class="bande" src="bande.png" width=100%></p>
+
+<div class="navbar">
+  <div class="item">
+    <a href="404.html">Accueil</a>
+  </div>
+
+  <div class="dropdown">
+    <a>Voir aussi</a>
+    <div class="contenu" >
+      <a href="404.html">Ada Lovelace</a>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <a>Sommaire</a>
+    <div class="contenu" >
+      <a href="#">Introduction</a>
+      <a href="#histoire">Histoire</a>
+      <a href="#informatique">Liens avec l'informatique'</a>
+    </div>
+  </div>
+
+  <div class="dropdown" style="float: right;">
+    <a>Parametres</a>
+    <div class="contenu" >
+      <a onclick="f_fond()">Fond</a>
+      <div class="dropdown" >
+        <a>Palette</a>
+        <div class="contenu">
+          <a onclick="f_couleurOriginal()">Couleurs originales</a>
+          <a onclick="f_couleurPersonnalisee()">Couleurs personnalisés</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="article">
+  <h1 style="font-size:30px;">Charles Babbage</h1>
+
+  <img src="Charles-Babbage.jpg" class="art" style="float: right;" />
+
+  <a id="introduction">
+  </a><h1>Introduction</strong></h1>
+
+  <p>Charles Babbage, né le 26 décembre 1791 et mort le 18 octobre 1871 à Londres, est un polymathe, mathématicien et inventeur visionnaire britannique du xixe siècle qui fut l'un des principaux précurseurs de l'informatique.
+  </p>
+
+  <a id="histoire"><br>
+  </a><h1>Histoire</strong></h1>
+
+  <h3>Famille, enfance et études</strong></h3>
+
+  <p>Charles Babbage est né au 44 Crosby Row, Walworth Road, Londres dans ce qui est maintenant le quartier londonien de Southwark. Son père était un prospère banquier londonien ce qui lui a permis d'entrer à l'école privée de Forty Hill, Enfield dans le Middlesex. C'est dans cette école qu'a commencé sa passion pour les mathématiques et à la sortie de l'académie Forty Hill, il a poursuivi ses études à la maison sous la tutelle d'un professeur d'Oxford. Il a étudié au Trinity College en 1810 et au Peterhouse.<br>
+  Durant ce séjour au Trinity College, il fonde la Société Analytique en 1812 en compagnie de neuf autres mathématiciens universitaires et ainsi peut faire sa première publication en 1813 : On continued products dans Memoirs of the Analytical Society. Il obtint son diplôme à Cambridge en 1814 et, cette même année, épouse Georgiana Whitmore sans l'autorisation de son père.</p>
+
+  <h3 >Différents postes et sociétés</strong></h3>
+
+  <p>Dès l'âge de 29 ans, il est élu membre à la Société Royale de Londres et à celle d'Édimbourg, en 1820. La même année il fonde la « Société Royale d'Astronomie » où il est secrétaire pour les quatre premières années de l'existence de cette société.
+    Il eut huit enfants avec son épouse, dont seulement trois atteignirent l'âge adulte.</p>
+
+  <h3 >1827-1871</strong></h3>
+
+  <p>À la mort de son père en 1827, Charles Babbage a hérité d'un grand domaine (valeur environ 100 000 £, soit 7 810 000 £ dans les livres d'aujourd'hui), ce qui le rend riche. Son épouse meurt la même année, Charles Babbage avait alors 36 ans et décida de voyager en Europe.
+  <br>
+  Il meurt le 18 octobre 1871. Vers la fin de sa vie, il déclara qu'il aurait accepté une mort immédiate à condition de pouvoir passer trois jours, cinq cents ans plus tard, avec un guide scientifique pouvant lui expliquer toutes les inventions apparues depuis sa mort.</p>
+
+  <a id="informatique"><br>
+  </a><h1 >Liens avec l'informatique</strong></h1>
+
+  <p>Il fut le premier à énoncer le principe d'un ordinateur. C'est en 1834, pendant le développement d'une machine à calculer destinée au calcul et à l'impression de tables mathématiques (la machine à différences) qu'il eut l'idée d'y incorporer des cartes du métier Jacquard, dont la lecture séquentielle donnerait des instructions et des données à sa machine, et donc imagina l'ancêtre mécanique des ordinateurs d'aujourd'hui. Il n'acheva jamais sa machine analytique, mais il passa le reste de sa vie à la concevoir dans les moindres détails et à en construire un prototype. Un de ses fils en construisit l'unité centrale (le moulin) et l'imprimante en 1888 et fit une démonstration réussie de calcul de table à l'académie royale d'astronomie en 1908.
+  </p>
+
+  <h3 >Conception d'un ordinateur</strong></h3>
+
+  <p>L'objectif de Charles Babbage était avant tout de concevoir des tables nautiques, astronomiques et mathématiques exactes, car celles de son époque étaient truffées d'erreurs. Charles Babbage s'aperçoit en effet que les tables de calculs comportent beaucoup d'erreurs, responsables, entre autres, de beaucoup d'accidents de navigation. Du coup, il essaie de concevoir une machine (Difference Engine 1) qui pourrait exécuter le travail sans faute, les erreurs humaines étant occasionnées par la fatigue ou l'ennui.<br>
+  Il caresse ainsi cette idée depuis 1812. Deux facteurs semblent avoir contribué à sa décision de concevoir un tel appareil : sa connaissance des tables de logarithmes, et le travail déjà commencé dans ce domaine par Blaise Pascal (avec la « Pascaline ») et Gottfried Leibniz (multiplicatrice). Au cours de la conception de la machine, il entre en correspondance avec une jeune femme, Ada Lovelace : citée par Charles Babbage dans ses comptes-rendus de 1843, elle apparaît comme à l'origine de la résolution d'un algorithme basé sur une suite de Bernoulli. C'est d’ailleurs sous son nom, « Lady Ada », qu'elle publie le premier algorithme destiné à être exécuté sur une machine : la machine à différences de Charles Babbage. Dans une correspondance avec Sir Humphry Davy en 1822, Charles Babbage y discute de certaines applications d'une telle machine, notamment pour le calcul et l'impression des tables mathématiques, et y discute aussi des principes d'une machine à calculer.</p>
+</div>
+
+<div class="footer"><b>FAURE Joshua</b>
+  <button onclick="Mouhahaaa()" class="mouhahaaa" id="test">DON'T CLICK ME !</button><br>
+  <div style="padding-top:10px;">
+    <div style="display: inline-block;">
+      <table style="margin-top: :10px;">
+        <tr>
+          <th>les <i>tableaux</i></th>
+          <th>c'est pas beaux</th>
+        </tr>
+        <tr>
+          <th>mais,</th>
+          <th> c'est <u>obligatoire</u></th>
+        </tr>
+      </table>
+    </div>
+    <div style="display: inline-block;">
+      <ul style="margin-bottom: 0px;">
+        <li>les <i>listes</i></li>
+        <li>non plus </li>
+      </ul>
+    </div>
+  </div>
+
+  <img src="argh.gif"></img>
+
+</div>
+</body>
+</html>
