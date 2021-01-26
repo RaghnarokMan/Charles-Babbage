@@ -1,0 +1,267 @@
+  
+<html>
+<head>
+  <script>
+
+  var palette_c1 = "";
+  var palette_c2 = "";
+  var image_fond = 4;
+  var nom_image_fond = ["motif_fond.jpg", "motif_fond2.jpg", "motif_fond3.jpg", "motif_fond4.jpg", "motif_fond5.jpg"];
+
+  function f_fond() {
+    image_fond = image_fond + 1;
+    if (image_fond === 5 ) {image_fond = 0;}
+    document.body.background = nom_image_fond[image_fond] ;
+  }
+  function f_couleurPersonnalisee() {
+    var palette_c1 = prompt('Veuillez choisir la couleur des titre (dans les standarts CSS)');
+    document.styleSheets[0].cssRules[2].style.color = palette_c1;
+    document.styleSheets[0].cssRules[6].style.backgroundColor = palette_c1;
+    var palette_c2 = prompt('Veuillez choisir la couleur des sous-titre (dans les standarts CSS)');
+    document.styleSheets[0].cssRules[3].style.color = palette_c2;
+    document.styleSheets[0].cssRules[10].style.backgroundColor = palette_c2;
+    document.styleSheets[0].cssRules[11].style.backgroundColor = palette_c2;
+  }
+  function f_couleurOriginal() {
+    document.styleSheets[0].cssRules[2].style.color = "#000055";
+    document.styleSheets[0].cssRules[6].style.backgroundColor = "#222";
+    document.styleSheets[0].cssRules[3].style.color = "#000077";
+    document.styleSheets[0].cssRules[10].style.backgroundColor = "#000055";
+    document.styleSheets[0].cssRules[11].style.backgroundColor = "#000055";
+  }
+  function Mouhahaaa() {
+    alert("Si vous êtes épileptique, veuillez rafraichir la page")
+    document.getElementById("test").innerHTML="NoOooOOoOoon !";
+    document.styleSheets[0].cssRules[17].style.height = "100%";
+    timerId = setInterval('argh()', 100);
+  }
+  function argh() {
+      document.styleSheets[0].cssRules[17].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
+      document.styleSheets[0].cssRules[5].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
+      document.styleSheets[0].cssRules[6].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
+      document.styleSheets[0].cssRules[3].style.color = "#" + String(Math.floor(Math.random()*1000000));
+      document.styleSheets[0].cssRules[2].style.color = "#" + String(Math.floor(Math.random()*1000000));
+      document.styleSheets[0].cssRules[10].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
+      document.styleSheets[0].cssRules[11].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
+  }
+
+
+  </script>
+<style>
+
+body {
+  margin: 0;
+  font-family: georgia, monospace, sans-serif;
+  background-size: 40%;
+}
+p {
+  margin-bottom: 0px;
+}
+h1 {
+  font-size:25px;
+  margin-left: 30px;
+  font-weight: bold;
+  color: #000055;
+}   /*ne pas bouger ou rajouter de classes ou balise au dessus*/
+h3 {
+  margin-left: 20px;
+  font-weight: bold;
+  color: #000077;
+}   /*ne pas bouger ou rajouter de classes ou balise au dessus*/
+img.bande {
+  background-size: cover;
+  height=100px
+}
+
+.article {
+  background-color: white;
+  padding: 40px;
+  margin: 10px 100px 40px;
+  border-radius: 20px;
+}
+
+.navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: #222;
+}/*barre de navigation*/
+  .item a, .dropdown a{
+    display: inline-block;
+    position: relative;
+    font-size: 20px;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    text-decoration: none;
+    border-radius: 10px;
+  }
+  .dropdown a .contenu{
+    background-color: #f1f1f1;
+    color: black;
+  }
+  .item, .dropdown {
+    display: inline-block;
+    position: relative;
+  }
+  .item a:hover {/*quand on passe la souris sur une balise a de item*/
+    background-color: #000055;
+  }  /*10*/   /*ne pas bouger ou rajouter de classes ou balise au dessus*/
+  .dropdown a:hover {/*quand on passe la souris sur une balise a de dropdown*/
+    background-color: #000055;
+  }    /*ne pas bouger ou rajouter de classes ou balise au dessus*/
+  .contenu {
+    display:  none;
+    background-color: #f1f1f1;
+    color: black;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    border-radius: 10px;
+  }
+  .dropdown:hover > .contenu {/*quand on passe la souris sur contenu descendant de dropdown*/
+    position: absolute;
+    display: block;
+  }
+  .contenu a{
+    background-color: #f1f1f1;
+    color: black;
+    border-radius: 10px;
+    width: 77%;
+  }
+  .contenu a:hover {/*quand on passe la souris sur une balise a de contenu*/
+    background-color: white;
+    color: black;
+    border-radius: 10px;
+  }
+  .contenu > .dropdown > .contenu{
+    right: 83px;
+    /*left: 0;*/
+    top: 0;
+  }/*si quelqu'un arrive a positionner le deuxième contenu au bon endroit, qu'il me le dise*/
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  padding: 5px;
+  height: 20px;
+  box-shadow: 0px -5px 5px;
+  background-color:  #f1f1f1;
+  transition: height 1s, padding 1s;
+}
+.footer:hover {
+  padding: 16px;
+  height: 100px;
+}
+.mouhahaaa {            /*19*/
+  border-radius: 8px;
+  background-color: #ff9999;
+  float: right;
+  margin-right: 50px;
+  cursor: pointer;
+}
+.mouhahaaa:hover {
+  transform: translate(-150px);
+}
+img.art {
+  height: 200px;
+}
+
+</style>
+</head>
+<link rel="icon" href="logo.png" />
+<body onload="f_fond()" >
+<p style="margin-bottom: 0px;"><img class="bande" src="bande.png" width=100%></p>
+
+<div class="navbar">
+  <div class="item">
+    <a href="404.html">acogida</a>
+  </div>
+
+  <div class="dropdown">
+    <a>ver también</a>
+    <div class="contenu" >
+      <a href="CharlesBabbage.html">Charles Babbage</a>
+    </div>
+  </div>
+
+  <div class="dropdown">
+    <a>Resumen</a>
+    <div class="contenu" >
+      <a href="#">Los reyes sociales</a>
+      <a href="#histoire">perfil de cibler usuario</a>
+    </div>
+  </div>
+
+  <div class="dropdown" style="float: right;">
+    <a>parámetro</a>
+    <div class="contenu" >
+      <a onclick="f_fond()">Fondo</a>
+      <div class="dropdown" >
+        <a>Paleta</a>
+        <div class="contenu">
+          <a onclick="f_couleurOriginal()">Colores originales</a>
+          <a onclick="f_couleurPersonnalisee()">Colores personalizado</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="article">
+  <a id="introduction">
+  </a><h1>Las reyes sociales</strong></h1>
+  <p>En este artículo, quiero hablar de los beneficios y de las desventajas de informarse en los reyes sociales. Este tema me parece importante porque es fácil de equivocarse y es muy malo para los gobiernos o las empresas que deben reparar las faltas.</p>
+  <p>Los reyes sociales son muy efectivos para transmitir noticias. efectivamente, permiten informar a una gran parte de la población en poco tiempo. Los jóvenes son muy presentes en los reyes sociales porque ellos permiten divertirse despues un dia de trabajo</p>
+  <p>Pero todos los reyes sociales pueden transmitir noticias falsas pero pueden evitar fácilmente estas informaciones haciendo cosas simples. Primero, siempre comprobar el origen de la información especialmente si ella parece extraordinaria. Entonces, podemos informar a la gente que la información es falsa y avisar al rey social que un contenido es inapropiado. Por fin, podemos mirar los sitios oficiales para ser cierto de la validez de las informaciones.</p>
+</div>
+
+<div class="article">
+  <a id="histoire">
+  </a><h1>perfil de cibler usuario</strong></h1>
+  <h3>Seudnimo :</h3>
+  <p>Raghnarok</p>
+  <h3>Posiones : </h3>
+  <ul>
+  <li>me gusta el deporte particularmente el esquí, el bádminton, el tenis y todos los otros deporte</li>
+  <li>me encanta leer y jugar a Minecraft cuando tienes tiempo</li>
+  <li>toco el piano (tienes que escuche Maple Leaf Rag de Scott Joplin) y me gusta Pink Floyd y Dire Straits</li>
+  <li>me gusta la ingeniería y construir máquinas </li>
+  </ul>
+  <h3>Habitos :</h3>
+  <ul>
+  <li>Me paso el tiempo programar páginas con HTML y CSS, puede ver mi trabajo en este enlace : https://raghnarokman.github.io/Charles-Babbage/CharlesBabbage.html</li>
+  <li>suelo ir a la escuela en bicicleta todo los dias hasta en invierno</li>
+  <li>de vez en cuando, construyó una ballesta con mi 3d primer</li>
+  </ul>
+  <h3>preocupaciones :</h3>
+  <p>me preocupa los noticias falsas que inducen a error la población y transmiten prejuicios y odio</p>
+</div>
+
+<div class="footer"><b>FAURE Joshua</b>
+  <button onclick="Mouhahaaa()" class="mouhahaaa" id="test">DON'T CLICK ME !</button><br>
+  <div style="padding-top:10px;">
+    <div style="display: inline-block;">
+      <table style="margin-top: :10px;">
+        <tr>
+          <th>les <i>tableaux</i></th>
+          <th>c'est pas beaux</th>
+        </tr>
+        <tr>
+          <th>mais,</th>
+          <th> c'est <u>obligatoire</u></th>
+        </tr>
+      </table>
+    </div>
+    <div style="display: inline-block;">
+      <ul style="margin-bottom: 0px;">
+        <li>les <i>listes</i></li>
+        <li>non plus </li>
+      </ul>
+    </div>
+  </div>
+
+  <img src="argh.gif"></img>
+
+</div>
+</body>
+</html>
