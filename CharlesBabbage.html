@@ -1,15 +1,16 @@
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script>
 
   var palette_c1 = "";
   var palette_c2 = "";
-  var image_fond = 4;
-  var nom_image_fond = ["motif_fond.jpg", "motif_fond2.jpg", "motif_fond3.jpg", "motif_fond4.jpg", "motif_fond5.jpg"];
+  var image_fond = 5;
+  var nom_image_fond = ["motif_fond.jpg", "motif_fond2.jpg", "motif_fond3.jpg", "motif_fond4.jpg", "motif_fond5.jpg", "motif_fond6.jpg", "motif_fond7.jpg"];
 
   function f_fond() {
     image_fond = image_fond + 1;
-    if (image_fond === 5 ) {image_fond = 0;}
+    if (image_fond === 7 ) {image_fond = 0;}
     document.body.background = nom_image_fond[image_fond] ;
   }
   function f_couleurPersonnalisee() {
@@ -18,30 +19,47 @@
     document.styleSheets[0].cssRules[6].style.backgroundColor = palette_c1;
     var palette_c2 = prompt('Veuillez choisir la couleur des sous-titre (dans les standarts CSS)');
     document.styleSheets[0].cssRules[3].style.color = palette_c2;
-    document.styleSheets[0].cssRules[10].style.backgroundColor = palette_c2;
-    document.styleSheets[0].cssRules[11].style.backgroundColor = palette_c2;
+    document.styleSheets[0].cssRules[5].style.backgroundColor = palette_c2;
   }
   function f_couleurOriginal() {
+    document.body.background = "motif_fond7.jpg"
     document.styleSheets[0].cssRules[2].style.color = "#000055";
     document.styleSheets[0].cssRules[6].style.backgroundColor = "#222";
     document.styleSheets[0].cssRules[3].style.color = "#000077";
-    document.styleSheets[0].cssRules[10].style.backgroundColor = "#000055";
-    document.styleSheets[0].cssRules[11].style.backgroundColor = "#000055";
+    document.styleSheets[0].cssRules[5].style.backgroundColor = "#000055";
+    document.styleSheets[0].cssRules[9].style.backgroundColor = "white";
+    document.styleSheets[0].cssRules[9].style.color = "black";
+    document.styleSheets[0].cssRules[7].style.backgroundColor = "#f1f1f1";
+    document.styleSheets[0].cssRules[7].style.color = "black";
+    document.styleSheets[0].cssRules[8].style.backgroundColor = "white";
+    document.styleSheets[0].cssRules[8].style.color = "black";
+  }
+  function f_couleurSombre() {
+    document.body.background = "motif_fond6.jpg"
+    document.styleSheets[0].cssRules[2].style.color = "#d0ffff";
+    document.styleSheets[0].cssRules[6].style.backgroundColor = "#222";
+    document.styleSheets[0].cssRules[3].style.color = "#a0ffff";
+    document.styleSheets[0].cssRules[5].style.backgroundColor = "#000055";
+    document.styleSheets[0].cssRules[9].style.backgroundColor = "#111";
+    document.styleSheets[0].cssRules[9].style.color = "white";
+    document.styleSheets[0].cssRules[8].style.backgroundColor = "#333";
+    document.styleSheets[0].cssRules[8].style.color = "white";
+    document.styleSheets[0].cssRules[7].style.backgroundColor = "#222";
+    document.styleSheets[0].cssRules[7].style.color = "white";
   }
   function Mouhahaaa() {
     alert("Si vous êtes épileptique, veuillez rafraichir la page")
     document.getElementById("test").innerHTML="NoOooOOoOoon !";
-    document.styleSheets[0].cssRules[17].style.height = "100%";
+    document.styleSheets[0].cssRules[11].style.height = "100%";
     timerId = setInterval('argh()', 100);
   }
   function argh() {
-      document.styleSheets[0].cssRules[17].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
       document.styleSheets[0].cssRules[5].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
       document.styleSheets[0].cssRules[6].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
+      document.styleSheets[0].cssRules[7].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
+      document.styleSheets[0].cssRules[9].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
       document.styleSheets[0].cssRules[3].style.color = "#" + String(Math.floor(Math.random()*1000000));
       document.styleSheets[0].cssRules[2].style.color = "#" + String(Math.floor(Math.random()*1000000));
-      document.styleSheets[0].cssRules[10].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
-      document.styleSheets[0].cssRules[11].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
   }
 
 
@@ -72,47 +90,50 @@ img.bande {
   height=100px
 }
 
+.dropdown a:hover, .item a:hover {
+  background-color: #000055;
+  color: white;
+}
+.item a, .dropdown a, .navbar, .navbar_responsive {
+  background-color: #222;
+  color: white;
+}
+.dropdown a .contenu, .contenu, .contenu a, .contenu a:hover, .footer {
+  background-color: #f1f1f1;
+  color: black;
+}
+.contenu a:hover {
+  background-color: white;
+}
 .article {
   background-color: white;
   padding: 40px;
-  margin: 10px 100px 40px;
+  margin: 10px 20% 40px;
   border-radius: 20px;
 }
 
-.navbar {
-  position: sticky;
-  top: 0;
-  width: 100%;
-  background-color: #222;
-}/*barre de navigation*/
+@media only screen and (min-width: 601px) {
+  .navbar {
+    position: sticky;
+    top: 0;
+    width: 100%;
+  }/*barre de navigation*/
   .item a, .dropdown a{
     display: inline-block;
     position: relative;
     font-size: 20px;
-    color: white;
     padding: 16px;
     font-size: 16px;
     text-decoration: none;
     border-radius: 10px;
   }
-  .dropdown a .contenu{
-    background-color: #f1f1f1;
-    color: black;
-  }
   .item, .dropdown {
     display: inline-block;
     position: relative;
   }
-  .item a:hover {/*quand on passe la souris sur une balise a de item*/
-    background-color: #000055;
-  }  /*10*/   /*ne pas bouger ou rajouter de classes ou balise au dessus*/
-  .dropdown a:hover {/*quand on passe la souris sur une balise a de dropdown*/
-    background-color: #000055;
-  }    /*ne pas bouger ou rajouter de classes ou balise au dessus*/
+
   .contenu {
     display:  none;
-    background-color: #f1f1f1;
-    color: black;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     border-radius: 10px;
   }
@@ -121,14 +142,10 @@ img.bande {
     display: block;
   }
   .contenu a{
-    background-color: #f1f1f1;
-    color: black;
     border-radius: 10px;
     width: 77%;
   }
   .contenu a:hover {/*quand on passe la souris sur une balise a de contenu*/
-    background-color: white;
-    color: black;
     border-radius: 10px;
   }
   .contenu > .dropdown > .contenu{
@@ -136,6 +153,57 @@ img.bande {
     /*left: 0;*/
     top: 0;
   }/*si quelqu'un arrive a positionner le deuxième contenu au bon endroit, qu'il me le dise*/
+  img.art {
+    height: 200px;
+  }
+  .navbar_responsive {
+    display: none;
+  }  /*barre de navigation*/
+}
+
+@media only screen and (max-width: 600px) {
+  .article {
+    margin: 0px 0% 40px;
+    border-radius: 0px;
+  }
+  img.art {
+    width: 100%;
+    height: auto;
+  }
+  .navbar {
+    display: none;
+  }
+  .navbar_responsive {
+    display: block;
+    position: sticky;
+    top: 0;
+    width: 100%;
+  }
+
+  .item, .dropdown {
+    width: 100%;
+  }
+  .item a, .dropdown a{
+    display: block;
+    position: relative;
+    font-size: 20px;
+    padding: 16px;
+    font-size: 16px;
+    text-decoration: none;
+  }
+  .item, .dropdown {
+    display: inline-block;
+    position: relative;
+  }
+  .contenu {
+    display:  none;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  }
+  .dropdown:hover > .contenu {/*quand on passe la souris sur contenu descendant de dropdown*/
+    position: relative;
+    display: block;
+  }
+}
 
 .footer {
   position: fixed;
@@ -144,7 +212,6 @@ img.bande {
   padding: 5px;
   height: 20px;
   box-shadow: 0px -5px 5px;
-  background-color:  #f1f1f1;
   transition: height 1s, padding 1s;
 }
 .footer:hover {
@@ -156,14 +223,16 @@ img.bande {
   background-color: #ff9999;
   float: right;
   margin-right: 50px;
-  cursor: pointer;
+  cursor: help;
 }
 .mouhahaaa:hover {
   transform: translate(-150px);
 }
-img.art {
-  height: 200px;
+
+.icone_menu {
+  width: 30px;
 }
+
 
 </style>
 </head>
@@ -173,13 +242,13 @@ img.art {
 
 <div class="navbar">
   <div class="item">
-    <a href="404.html">Accueil</a>
+    <a href="accueil.html">Accueil</a>
   </div>
 
   <div class="dropdown">
     <a>Voir aussi</a>
     <div class="contenu" >
-      <a href="404.html">Ada Lovelace</a>
+      <a href="AdaLovelace.html">Ada Lovelace</a>
     </div>
   </div>
 
@@ -199,11 +268,57 @@ img.art {
       <div class="dropdown" >
         <a>Palette</a>
         <div class="contenu">
-          <a onclick="f_couleurOriginal()">Couleurs originales</a>
+          <a onclick="f_couleurOriginal()">Thème clair</a>
+          <a onclick="f_couleurSombre()">Thème sombre</a>
           <a onclick="f_couleurPersonnalisee()">Couleurs personnalisés</a>
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div class="navbar_responsive">
+
+  <div class="dropdown">
+    <a><img src="hamburger_menu.png" class="icone_menu"> </a>
+
+    <div class="contenu">
+
+      <div class="item" > <a href="accueil.html">Accueil</a> </div>
+
+      <div class="dropdown">
+        <a>Voir aussi</a>
+        <div class="contenu" >
+          <a href="AdaLovelace.html">Ada Lovelace</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <a>Sommaire</a>
+        <div class="contenu" >
+          <a href="#">Introduction</a>
+          <a href="#histoire">Histoire</a>
+          <a href="#informatique">Liens avec l'informatique'</a>
+        </div>
+      </div>
+
+      <div class="dropdown">
+        <a>Parametres</a>
+        <div class="contenu" >
+          <a onclick="f_fond()">Fond</a>
+          <div class="dropdown" >
+            <a>Palette</a>
+            <div class="contenu">
+              <a onclick="f_couleurOriginal()">Thème clair</a>
+              <a onclick="f_couleurSombre()">Thème sombre</a>
+              <a onclick="f_couleurPersonnalisee()">Couleurs personnalisés</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
   </div>
 </div>
 
