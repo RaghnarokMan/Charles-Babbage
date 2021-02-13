@@ -1,5 +1,12 @@
 <html>
 <head>
+  <script>
+    function f_move() {
+      var a = event.key;
+      alert(a)
+    }
+    timerId = setInterval('f_move()', 100);
+  </script>
 <style>
 h1 {
   font-size: 100px;
