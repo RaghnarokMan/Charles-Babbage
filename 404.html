@@ -6,9 +6,11 @@
       if (event.key === "ArrowUp") {
         var x = x+10;}
         document.styleSheets[0].cssRules[0].top = x + "px";
+        alert("yeaaah ! ça marche !")
       if (event.key === "ArrowDown") {
         var x = x-10;
         document.styleSheets[0].cssRules[0].top = x + "px";
+        alert("yeaaah ! ça marche !")
       }
     }
     timerId = setInterval('f_move(event)', 300);
