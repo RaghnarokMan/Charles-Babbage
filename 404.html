@@ -2,9 +2,17 @@
 <head>
 
 <script>
+  if (document.body)  {
+    var larg = (document.body.clientWidth)-200;
+    var haut = (document.body.clientHeight)-300;
+  }
+  else  {
+    var larg = (window.innerWidth)-200;
+    var haut = (window.innerHeight)-300;
+  }
   var y = 100;
-  var x_move = 20;
-  var y_move = 10;
+  var x_move = Math.floor(larg/64);
+  var y_move = Math.floor(haut/64);
   var mini_jeu = 0;
   var argh = 0;
   var rot = 0;
@@ -12,13 +20,13 @@
   var score = 0;
   var pizza = 0;
 
-  var x = 1500;
+  var x = larg;
   var y_m = 100;
 
-  var x2 = 1500;
+  var x2 = larg;
   var y_m2 = 500;
 
-  var x3 = 1500;
+  var x3 = larg;
   var y_m3 = 300;
 
     function grrr() {
@@ -48,28 +56,30 @@
           document.styleSheets[0].cssRules[0].style.top = y + "px";
         }
       }
-
     }
 
     function f_meteorite() {
+      if (argh === 1) {
+        document.styleSheets[0].cssRules[0].style.transform = "rotate("+rot+"deg)";
+        document.styleSheets[0].cssRules[0].style.width = h + "px";
+      }
       x = x - x_move;
       if (x < -200) {
         x_move += 4;
-        y_move += 2;
-        x = 1500;
-        y_m = String(Math.floor(Math.random()*500));
+        y_move += 4;
+        x = larg;
+        y_m = Math.floor(Math.random()*haut);
         document.styleSheets[0].cssRules[1].style.top = y_m + "px";
       }
       document.styleSheets[0].cssRules[1].style.left = x + "px";
-      if ( (x<200 && x>-100) && (y-y_m > -130 && y-y_m < 130) ) {
+      if ( (x<200 && x>-100) && (y_m+120 > y) && (y_m < y+80) ) {
         argh =1;
         rot += 20;
         h -= 25;
-        document.styleSheets[0].cssRules[0].style.transform = "rotate("+rot+"deg)";
-        document.styleSheets[0].cssRules[0].style.width = h + "px";
+
         if (h<20) {
           document.styleSheets[0].cssRules[0].style.display = "none";
-          document.styleSheets[0].cssRules[0].style.top = "-1000px";
+          y = -10000;
           document.getElementById("score").innerHTML = "SCORE = " + pizza + "<br>VOUS AVEZ PERDU !";
           document.styleSheets[0].cssRules[2].style.color = "#f00000";
         }
@@ -79,12 +89,12 @@
     function f_meteorite2() {
       x2 = x2 - x_move;
       if (x2 < -200) {
-        x2 = 1500;
-        y_m2 = String(Math.floor(Math.random()*500));
+        x2 = larg;
+        y_m2 = Math.floor(Math.random()*haut);
         document.styleSheets[0].cssRules[4].style.top = y_m2 + "px";
       }
       document.styleSheets[0].cssRules[4].style.left = x2 + "px";
-      if ( (x2<200 && x2>-100) && (y-y_m2 > -130 && y-y_m2 < 130)) {
+      if ( (x2<200 && x2>-100) && (y_m2+120 > y && y_m2 < y+80)) {
         argh =1;
         rot += 20;
         h -= 25;
@@ -92,26 +102,28 @@
         document.styleSheets[0].cssRules[0].style.width = h + "px";
         if (h<20) {
           document.styleSheets[0].cssRules[0].style.display = "none";
-          document.styleSheets[0].cssRules[0].style.top = "-1000px";
-          document.getElementById("score").innerHTML = "SCORE = " + pizza + "VOUS AVEZ PERDU !";
+          y = -10000;
+          document.getElementById("score").innerHTML = "SCORE = " + pizza + "<br>VOUS AVEZ PERDU !";
           document.styleSheets[0].cssRules[2].style.color = "#f00000";
         }
       }
     }
 
     function f_pizza() {
+      document.styleSheets[0].cssRules[5].style.top = y_m3 + "px";
       x3 = x3 - x_move;
       if (x3 < -200) {
-        document.styleSheets[0].cssRules[5].style.display = "block";
-        x3 = 1500;
-        y_m3 = String(Math.floor(Math.random()*500));
+        x3 = larg;
+        y_m3 = Math.floor(Math.random()*haut);
         document.styleSheets[0].cssRules[5].style.top = y_m3 + "px";
       }
       document.styleSheets[0].cssRules[5].style.left = x3 + "px";
-      if ( (x3<200 && x3>-100) && (y-y_m3 > -150 && y-y_m3 < 50) && argh === 0) {
+      if ( (x3<200 && x3>-100) && ( y_m3+50 > y && y_m3 < y+150 ) && argh === 0) {
         pizza += 1;
         document.getElementById("score").innerHTML = "SCORE = " + pizza;
-        document.styleSheets[0].cssRules[5].style.display = "none";
+        x3 = larg;
+
+        y_m3 = Math.floor(Math.random()*haut);
       }
     }
 
@@ -151,7 +163,7 @@ p {
   position: absolute;
   display: none;
   left: 1500px;
-  height: 100px;
+  height: 150px;
   top: 300px;
 }
 
