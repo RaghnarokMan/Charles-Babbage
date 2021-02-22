@@ -1,43 +1,174 @@
+
 <html>
 <head>
-  <script>
-    function f_move(event) {
-      var x = 0;
-      if (event === "ArrowUp") {
-        var x = x+10;
-        document.styleSheets[0].cssRules[0].top = x + "px";
-        alert("yeaaah ! ça marche ! up")
-      }
-       
-      if (event === "ArrowDown") {
-        var x = x-10;
-        document.styleSheets[0].cssRules[0].top = x + "px";
-        alert("yeaaah ! ça marche ! down")
-      }
-      
+
+<script>
+  var y = 100;
+  var x_move = 20;
+  var y_move = 10;
+  var mini_jeu = 0;
+  var argh = 0;
+  var rot = 0;
+  var h = 256;
+  var score = 0;
+  var pizza = 0;
+
+  var x = 1500;
+  var y_m = 100;
+
+  var x2 = 1500;
+  var y_m2 = 500;
+
+  var x3 = 1500;
+  var y_m3 = 300;
+
+    function grrr() {
+      document.styleSheets[0].cssRules[2].style.color = "red";
+      document.body.background = "fond.gif"
+      document.styleSheets[0].cssRules[1].style.display = "block";
+      document.styleSheets[0].cssRules[4].style.display = "block";
+      document.styleSheets[0].cssRules[5].style.display = "block";
+      document.styleSheets[0].cssRules[3].style.display = "none";
+      mini_jeu = 1;
+      timerId = setInterval('f_meteorite()', 100);
+      timerId = setInterval('f_meteorite2()', 150);
+      timerId = setInterval('f_pizza()', 125);
+      document.getElementById("score").innerHTML = "SCORE = 0";
     }
-    timerId = setInterval('f_move(event)', 300);
+
+    function f_move(event) {
+      if (mini_jeu === 1) {
+        var ArrowPress = event.key;
+        if (ArrowPress === "ArrowUp") {
+          y = y - y_move;
+          document.styleSheets[0].cssRules[0].style.top = y + "px";
+        }
+
+        if (ArrowPress === "ArrowDown") {
+          y = y + y_move;
+          document.styleSheets[0].cssRules[0].style.top = y + "px";
+        }
+      }
+
+    }
+
+    function f_meteorite() {
+      x = x - x_move;
+      if (x < -200) {
+        x_move += 4;
+        y_move += 2;
+        x = 1500;
+        y_m = String(Math.floor(Math.random()*500));
+        document.styleSheets[0].cssRules[1].style.top = y_m + "px";
+      }
+      document.styleSheets[0].cssRules[1].style.left = x + "px";
+      if ( (x<200 && x>-100) && (y-y_m > -130 && y-y_m < 130) ) {
+        argh =1;
+        rot += 20;
+        h -= 25;
+        document.styleSheets[0].cssRules[0].style.transform = "rotate("+rot+"deg)";
+        document.styleSheets[0].cssRules[0].style.width = h + "px";
+        if (h<20) {
+          document.styleSheets[0].cssRules[0].style.display = "none";
+          document.styleSheets[0].cssRules[0].style.top = "-1000px";
+          document.getElementById("score").innerHTML = "SCORE = " + pizza + "<br>VOUS AVEZ PERDU !";
+          document.styleSheets[0].cssRules[2].style.color = "#f00000";
+        }
+      }
+    }
+
+    function f_meteorite2() {
+      x2 = x2 - x_move;
+      if (x2 < -200) {
+        x2 = 1500;
+        y_m2 = String(Math.floor(Math.random()*500));
+        document.styleSheets[0].cssRules[4].style.top = y_m2 + "px";
+      }
+      document.styleSheets[0].cssRules[4].style.left = x2 + "px";
+      if ( (x2<200 && x2>-100) && (y-y_m2 > -130 && y-y_m2 < 130)) {
+        argh =1;
+        rot += 20;
+        h -= 25;
+        document.styleSheets[0].cssRules[0].style.transform = "rotate("+rot+"deg)";
+        document.styleSheets[0].cssRules[0].style.width = h + "px";
+        if (h<20) {
+          document.styleSheets[0].cssRules[0].style.display = "none";
+          document.styleSheets[0].cssRules[0].style.top = "-1000px";
+          document.getElementById("score").innerHTML = "SCORE = " + pizza + "VOUS AVEZ PERDU !";
+          document.styleSheets[0].cssRules[2].style.color = "#f00000";
+        }
+      }
+    }
+
+    function f_pizza() {
+      x3 = x3 - x_move;
+      if (x3 < -200) {
+        document.styleSheets[0].cssRules[5].style.display = "block";
+        x3 = 1500;
+        y_m3 = String(Math.floor(Math.random()*500));
+        document.styleSheets[0].cssRules[5].style.top = y_m3 + "px";
+      }
+      document.styleSheets[0].cssRules[5].style.left = x3 + "px";
+      if ( (x3<200 && x3>-100) && (y-y_m3 > -150 && y-y_m3 < 50) && argh === 0) {
+        pizza += 1;
+        document.getElementById("score").innerHTML = "SCORE = " + pizza;
+        document.styleSheets[0].cssRules[5].style.display = "none";
+      }
+    }
+
   </script>
+
 <style>
-  
-  .chat {
-    position: absolute;
-    top: 0px;
-  }
-  
+
+.chat {
+  position: absolute;
+  top: 100px;
+  transition: rotate 100ms height 100ms;
+}
+.meteorite {
+  position: absolute;
+  display: none;
+  left: 1500px;
+  height: 300px;
+  top: 100px;
+  transform: rotate(180deg);
+}
 h1 {
   font-size: 100px;
-  margin-bottom: 0;
+  margin: 10 20 0;
 }
 p {
   padding-left: 50px;
 }
+.meteorite2 {
+  position: absolute;
+  display: none;
+  left: 1500px;
+  height: 300px;
+  top: 500px;
+  transform: rotate(180deg);
+}
+.pizza {
+  position: absolute;
+  display: none;
+  left: 1500px;
+  height: 100px;
+  top: 300px;
+}
+
 </style>
 </head>
+
 <link rel="icon" href="logo.png" />
 <body onkeydown="f_move(event)">
-  <h1>Error 404</h1>
-  <p>Page not found</p>
-  <img class="chat" src="argh.gif"/>
-</body
+
+<h1 id="score" >Error 404</h1>
+<p>Page not found</p>
+
+<img class="chat" src="argh.gif" onclick="grrr()"/>
+<img class="meteorite" src="meteorite.gif" />
+<img class="meteorite2" src="meteorite2.gif" />
+<img class="pizza" src="pizza.gif" />
+
+</body>
 </html>
