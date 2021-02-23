@@ -3,13 +3,14 @@
 
 <script>
   if (document.body)  {
-    var larg = (document.body.clientWidth)-200;
+    var larg = (document.body.clientWidth)-300;
     var haut = (document.body.clientHeight)-300;
   }
   else  {
-    var larg = (window.innerWidth)-200;
+    var larg = (window.innerWidth)-300;
     var haut = (window.innerHeight)-300;
   }
+  var k = 100;
   var y = 100;
   var x_move = Math.floor(larg/64);
   var y_move = Math.floor(haut/64);
@@ -21,29 +22,62 @@
   var pizza = 0;
 
   var x = larg;
-  var y_m = 100;
+  var y_m = Math.floor(Math.random()*haut);
 
   var x2 = larg;
-  var y_m2 = 500;
+  var y_m2 = Math.floor(Math.random()*haut);
 
   var x3 = larg;
-  var y_m3 = 300;
+  var y_m3 = Math.floor(Math.random()*haut);
 
-    function grrr() {
+  function grrr() {
       document.styleSheets[0].cssRules[2].style.color = "red";
+      document.styleSheets[0].cssRules[2].style.fontSize = "50px";
+      document.styleSheets[0].cssRules[2].style.fontFamily = "Blippo, fantasy, Arial, sans-serif";
       document.body.background = "fond.gif"
+      /*  ça ne marche point
+      document.styleSheets[0].cssRules[0].style.height = larg/3 + "px";
+      document.styleSheets[0].cssRules[1].style.height = larg/4 + "px";
+      document.styleSheets[0].cssRules[4].style.height = larg/4 + "px";
+      document.styleSheets[0].cssRules[5].style.height = larg/8 + "px";
+      */
+      document.styleSheets[0].cssRules[1].style.top = y_m + "px";
+      document.styleSheets[0].cssRules[4].style.top = y_m2 + "px";
+      document.styleSheets[0].cssRules[5].style.top = y_m3 + "px";
       document.styleSheets[0].cssRules[1].style.display = "block";
       document.styleSheets[0].cssRules[4].style.display = "block";
       document.styleSheets[0].cssRules[5].style.display = "block";
-      document.styleSheets[0].cssRules[3].style.display = "none";
+
+      document.getElementById("tailleEcran").innerHTML = "Largeur= " + (larg+300).valueOf() +" hauteur = " + (haut+300).valueOf() ;
+      document.styleSheets[0].cssRules[3].style.position = "absolute";
+      document.styleSheets[0].cssRules[3].style.right = "30px";
+      document.styleSheets[0].cssRules[3].style.top = "10px";
+
       mini_jeu = 1;
-      timerId = setInterval('f_meteorite()', 100);
-      timerId = setInterval('f_meteorite2()', 150);
-      timerId = setInterval('f_pizza()', 125);
+      timerId = setInterval('f_meteorite()', k);
+      timerId = setInterval('f_argh()', 10);
+      timerId = setInterval('f_meteorite2()', 1.5*k);
+      timerId = setInterval('f_pizza()', 1.25*k);
       document.getElementById("score").innerHTML = "SCORE = 0";
     }
 
-    function f_move(event) {
+  function f_argh() {
+    if (argh === 1) {
+      document.styleSheets[0].cssRules[0].style.transform = "rotate("+rot+"deg)";
+      document.styleSheets[0].cssRules[0].style.height = h + "px";
+      rot += 10;
+      h -= 5;
+    }
+
+    if (h<10) {
+      document.styleSheets[0].cssRules[0].style.display = "none";
+      y = -10000;
+      document.getElementById("score").innerHTML = "SCORE = " + pizza + "<br>VOUS AVEZ PERDU !";
+      document.styleSheets[0].cssRules[2].style.color = "#f00000";
+    }
+  }
+
+  function f_move(event) {
       if (mini_jeu === 1) {
         var ArrowPress = event.key;
         if (ArrowPress === "ArrowUp") {
@@ -58,35 +92,23 @@
       }
     }
 
-    function f_meteorite() {
-      if (argh === 1) {
-        document.styleSheets[0].cssRules[0].style.transform = "rotate("+rot+"deg)";
-        document.styleSheets[0].cssRules[0].style.width = h + "px";
-      }
+  function f_meteorite() {
       x = x - x_move;
       if (x < -200) {
         x_move += 4;
-        y_move += 4;
+        y_move += 2;
         x = larg;
         y_m = Math.floor(Math.random()*haut);
         document.styleSheets[0].cssRules[1].style.top = y_m + "px";
       }
       document.styleSheets[0].cssRules[1].style.left = x + "px";
-      if ( (x<200 && x>-100) && (y_m+120 > y) && (y_m < y+80) ) {
-        argh =1;
-        rot += 20;
-        h -= 25;
+      if ( (x<180 && x>-100) && (y_m+120 > y) && (y_m < y+80) ) {
+        argh = 1;
 
-        if (h<20) {
-          document.styleSheets[0].cssRules[0].style.display = "none";
-          y = -10000;
-          document.getElementById("score").innerHTML = "SCORE = " + pizza + "<br>VOUS AVEZ PERDU !";
-          document.styleSheets[0].cssRules[2].style.color = "#f00000";
-        }
       }
     }
 
-    function f_meteorite2() {
+  function f_meteorite2() {
       x2 = x2 - x_move;
       if (x2 < -200) {
         x2 = larg;
@@ -94,22 +116,13 @@
         document.styleSheets[0].cssRules[4].style.top = y_m2 + "px";
       }
       document.styleSheets[0].cssRules[4].style.left = x2 + "px";
-      if ( (x2<200 && x2>-100) && (y_m2+120 > y && y_m2 < y+80)) {
+      if ( (x2<180 && x2>-100) && (y_m2+120 > y && y_m2 < y+80)) {
         argh =1;
-        rot += 20;
-        h -= 25;
-        document.styleSheets[0].cssRules[0].style.transform = "rotate("+rot+"deg)";
-        document.styleSheets[0].cssRules[0].style.width = h + "px";
-        if (h<20) {
-          document.styleSheets[0].cssRules[0].style.display = "none";
-          y = -10000;
-          document.getElementById("score").innerHTML = "SCORE = " + pizza + "<br>VOUS AVEZ PERDU !";
-          document.styleSheets[0].cssRules[2].style.color = "#f00000";
-        }
+
       }
     }
 
-    function f_pizza() {
+  function f_pizza() {
       document.styleSheets[0].cssRules[5].style.top = y_m3 + "px";
       x3 = x3 - x_move;
       if (x3 < -200) {
@@ -118,7 +131,7 @@
         document.styleSheets[0].cssRules[5].style.top = y_m3 + "px";
       }
       document.styleSheets[0].cssRules[5].style.left = x3 + "px";
-      if ( (x3<200 && x3>-100) && ( y_m3+50 > y && y_m3 < y+150 ) && argh === 0) {
+      if ( (x3<190 && x3>-100) && ( y_m3+50 > y && y_m3 < y+150 ) && argh === 0) {
         pizza += 1;
         document.getElementById("score").innerHTML = "SCORE = " + pizza;
         x3 = larg;
@@ -134,14 +147,12 @@
 .chat {
   position: absolute;
   top: 100px;
-  transition: rotate 100ms height 100ms;
+  left: -10;
 }
 .meteorite {
   position: absolute;
   display: none;
-  left: 1500px;
   height: 300px;
-  top: 100px;
   transform: rotate(180deg);
 }
 h1 {
@@ -154,17 +165,13 @@ p {
 .meteorite2 {
   position: absolute;
   display: none;
-  left: 1500px;
   height: 300px;
-  top: 500px;
   transform: rotate(180deg);
 }
 .pizza {
   position: absolute;
   display: none;
-  left: 1500px;
   height: 150px;
-  top: 300px;
 }
 
 </style>
@@ -174,7 +181,7 @@ p {
 <body onkeydown="f_move(event)">
 
 <h1 id="score" >Error 404</h1>
-<p>Page not found</p>
+<p id="tailleEcran">Page not found</p>
 
 <img class="chat" src="argh.gif" onclick="grrr()"/>
 <img class="meteorite" src="meteorite.gif" />
