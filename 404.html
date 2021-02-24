@@ -47,8 +47,11 @@
       document.styleSheets[0].cssRules[1].style.display = "block";
       document.styleSheets[0].cssRules[4].style.display = "block";
       document.styleSheets[0].cssRules[5].style.display = "block";
+      if ( larg < 700 ) {
+        document.styleSheets[0].cssRules[6].style.display = "block";
+      }
 
-      document.getElementById("tailleEcran").innerHTML = "Largeur= " + (larg+300).valueOf() +" hauteur = " + (haut+300).valueOf() ;
+      document.getElementById("tailleEcran").innerHTML = "Largeur = " + (larg+300).valueOf() +" hauteur = " + (haut+300).valueOf() ;
       document.styleSheets[0].cssRules[3].style.position = "absolute";
       document.styleSheets[0].cssRules[3].style.right = "30px";
       document.styleSheets[0].cssRules[3].style.top = "10px";
@@ -140,6 +143,14 @@
       }
     }
 
+  function Up() {
+    y = y - y_move;
+    document.styleSheets[0].cssRules[0].style.top = y + "px";
+  }
+  function Down() {
+    y = y + y_move;
+    document.styleSheets[0].cssRules[0].style.top = y + "px";
+  }
   </script>
 
 <style>
@@ -174,6 +185,23 @@ p {
   height: 150px;
 }
 
+div {
+  display: none;
+  position: absolute;
+  margin-left: 10%;
+  padding: 20px 40% 20px;
+
+  background-color: #673ab7;
+  border-radius: 10px;
+}
+
+.bouton1 {
+  bottom: 100px;
+}
+.bouton2 {
+  bottom: 20px;
+}
+
 </style>
 </head>
 
@@ -187,6 +215,9 @@ p {
 <img class="meteorite" src="meteorite.gif" />
 <img class="meteorite2" src="meteorite2.gif" />
 <img class="pizza" src="pizza.gif" />
+
+<div class="bouton1" onclick="Up()">↑</div>
+<div class="bouton2" onclick="Down()">↓</div>
 
 </body>
 </html>
