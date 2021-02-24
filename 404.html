@@ -146,7 +146,7 @@
   function Up() {
     y = y - 3*y_move;
     document.styleSheets[0].cssRules[0].style.top = y + "px";
-    if (y < -25) {
+    if (y < -100) {
       y = 0.9*haut;
       document.styleSheets[0].cssRules[0].style.top = y + "px";
     }
@@ -155,7 +155,7 @@
     y = y + 3*y_move;
     document.styleSheets[0].cssRules[0].style.top = y + "px";
     if (y > 0.9*haut) {
-      y = -10;
+      y = -100;
       document.styleSheets[0].cssRules[0].style.top = y + "px";
     }
   }
