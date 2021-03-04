@@ -1,19 +1,19 @@
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script>
+<script>
 
   var palette_c1 = "";
   var palette_c2 = "";
   var image_fond = 5;
   var nom_image_fond = ["motif_fond.jpg", "motif_fond2.jpg", "motif_fond3.jpg", "motif_fond4.jpg", "motif_fond5.jpg", "motif_fond6.jpg", "motif_fond7.jpg"];
 
-  function f_fond() {
+  function f_fond() {  /* fonction pour le changement d'arrière fond*/
     image_fond = image_fond + 1;
     if (image_fond === 7 ) {image_fond = 0;}
     document.body.background = nom_image_fond[image_fond] ;
   }
-  function f_couleurPersonnalisee() {
+  function f_couleurPersonnalisee() {   /* fonction pour choisir ses couleurs de titre*/
     var palette_c1 = prompt('Veuillez choisir la couleur des titre (dans les standarts CSS)');
     document.styleSheets[0].cssRules[2].style.color = palette_c1;
     document.styleSheets[0].cssRules[6].style.backgroundColor = palette_c1;
@@ -21,7 +21,7 @@
     document.styleSheets[0].cssRules[3].style.color = palette_c2;
     document.styleSheets[0].cssRules[5].style.backgroundColor = palette_c2;
   }
-  function f_couleurOriginal() {
+  function f_couleurOriginal() {  /* fonction pour le thème clair*/
     document.body.background = "motif_fond7.jpg"
     document.styleSheets[0].cssRules[2].style.color = "#000055";
     document.styleSheets[0].cssRules[6].style.backgroundColor = "#222";
@@ -34,7 +34,7 @@
     document.styleSheets[0].cssRules[8].style.backgroundColor = "white";
     document.styleSheets[0].cssRules[8].style.color = "black";
   }
-  function f_couleurSombre() {
+  function f_couleurSombre() {  /* fonction pour le thème sombre*/
     document.body.background = "motif_fond6.jpg"
     document.styleSheets[0].cssRules[2].style.color = "#d0ffff";
     document.styleSheets[0].cssRules[6].style.backgroundColor = "#222";
@@ -47,13 +47,13 @@
     document.styleSheets[0].cssRules[7].style.backgroundColor = "#222";
     document.styleSheets[0].cssRules[7].style.color = "white";
   }
-  function Mouhahaaa() {
+  function Mouhahaaa() {   /* fonction pour le petit easter egg*/
     alert("Si vous êtes épileptique, veuillez rafraichir la page")
     document.getElementById("test").innerHTML="NoOooOOoOoon !";
     document.styleSheets[0].cssRules[12].style.height = "100%";
     timerId = setInterval('argh()', 100);
   }
-  function argh() {
+  function argh() {   /* fonction pour les changement de couleur de l'easter egg*/
       document.styleSheets[0].cssRules[5].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
       document.styleSheets[0].cssRules[6].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
       document.styleSheets[0].cssRules[7].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
@@ -63,7 +63,7 @@
   }
 
 
-  </script>
+</script>
 <style>
 
 body {
@@ -108,11 +108,11 @@ img.bande {
 .article {
   background-color: white;
   padding: 40px;
-  margin: 20px 20% 40px;
+  margin: 10px 20% 40px;
   border-radius: 20px;
 }
 
-@media only screen and (min-width: 601px) {
+@media only screen and (min-width: 601px) {   /* la version ordinateur*/
   .navbar {
     position: sticky;
     top: 0;
@@ -161,7 +161,7 @@ img.bande {
   }  /*barre de navigation*/
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 600px) { /* version pour téléphones*/
   .article {
     margin: 0px 0% 40px;
     border-radius: 0px;
@@ -203,7 +203,6 @@ img.bande {
     position: relative;
     display: block;
   }
-  .contenu .dropdown .contenu a {padding-left: 25px;}
 }
 
 .footer {
@@ -219,7 +218,7 @@ img.bande {
   padding: 16px;
   height: 100px;
 }
-.mouhahaaa {            /*19*/
+.mouhahaaa {
   border-radius: 8px;
   background-color: #ff9999;
   float: right;
@@ -234,7 +233,30 @@ img.bande {
   width: 30px;
 }
 
-
+#groar {
+  height: 10px;
+  position: absolute;
+  right: 0px;
+  top: 500px;
+  transform: rotate(-90deg);
+  transition: height 1s, right 1s;
+}
+#groar:hover {
+  height: 100px;
+  right: -35px;
+}
+#grooooaaar {
+  height: 15px;
+  position: absolute;
+  left: 0px;
+  top: 1500px;
+  transform: rotate(90deg);
+  transition: height 1s, left 1s;
+}
+#grooooaaar:hover {
+  height: 100px;
+  left: -35px;
+}
 </style>
 </head>
 <link rel="icon" href="logo.png" />
@@ -326,7 +348,7 @@ img.bande {
 <div class="article">
   <h1 style="font-size:30px;">Charles Babbage</h1>
 
-  <img src="Charles-Babbage.jpg" class="art" style="float: right;" />
+  <img src="Charles-Babbage.png" class="art" style="float: right;" />
 
   <a id="introduction">
   </a><h1>Introduction</strong></h1>
@@ -364,6 +386,9 @@ img.bande {
   <p>L'objectif de Charles Babbage était avant tout de concevoir des tables nautiques, astronomiques et mathématiques exactes, car celles de son époque étaient truffées d'erreurs. Charles Babbage s'aperçoit en effet que les tables de calculs comportent beaucoup d'erreurs, responsables, entre autres, de beaucoup d'accidents de navigation. Du coup, il essaie de concevoir une machine (Difference Engine 1) qui pourrait exécuter le travail sans faute, les erreurs humaines étant occasionnées par la fatigue ou l'ennui.<br>
   Il caresse ainsi cette idée depuis 1812. Deux facteurs semblent avoir contribué à sa décision de concevoir un tel appareil : sa connaissance des tables de logarithmes, et le travail déjà commencé dans ce domaine par Blaise Pascal (avec la « Pascaline ») et Gottfried Leibniz (multiplicatrice). Au cours de la conception de la machine, il entre en correspondance avec une jeune femme, Ada Lovelace : citée par Charles Babbage dans ses comptes-rendus de 1843, elle apparaît comme à l'origine de la résolution d'un algorithme basé sur une suite de Bernoulli. C'est d’ailleurs sous son nom, « Lady Ada », qu'elle publie le premier algorithme destiné à être exécuté sur une machine : la machine à différences de Charles Babbage. Dans une correspondance avec Sir Humphry Davy en 1822, Charles Babbage y discute de certaines applications d'une telle machine, notamment pour le calcul et l'impression des tables mathématiques, et y discute aussi des principes d'une machine à calculer.</p>
 </div>
+
+<img src="groar_loop.gif" id="groar"/>
+<img src="grooooaaar.gif" id="grooooaaar"/>
 
 <div class="footer"><b>FAURE Joshua</b>
   <button onclick="Mouhahaaa()" class="mouhahaaa" id="test">DON'T CLICK ME !</button><br>
