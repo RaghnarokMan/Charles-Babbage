@@ -30,7 +30,7 @@
   var x3 = larg;
   var y_m3 = Math.floor(Math.random()*haut);
 
-  function grrr() {
+  function grrr() {    /* Cette fonction initialise le mini jeu*/
       document.styleSheets[0].cssRules[2].style.color = "red";
       document.styleSheets[0].cssRules[2].style.fontSize = "50px";
       document.styleSheets[0].cssRules[2].style.fontFamily = "Blippo, fantasy, Arial, sans-serif";
@@ -47,7 +47,7 @@
       document.styleSheets[0].cssRules[1].style.display = "block";
       document.styleSheets[0].cssRules[4].style.display = "block";
       document.styleSheets[0].cssRules[5].style.display = "block";
-      if ( larg < 700 ) {
+      if ( larg < 700 ) {  /*Pour les téléphones */
         document.styleSheets[0].cssRules[6].style.display = "block";
       }
 
@@ -57,14 +57,14 @@
       document.styleSheets[0].cssRules[3].style.top = "10px";
 
       mini_jeu = 1;
-      timerId = setInterval('f_meteorite()', k);
+      timerId = setInterval('f_meteorite()', k);  /*ces lignes rafraichissent les fonctions du mini jeu en fonction de k */
       timerId = setInterval('f_argh()', 10);
       timerId = setInterval('f_meteorite2()', 1.5*k);
       timerId = setInterval('f_pizza()', 1.25*k);
       document.getElementById("score").innerHTML = "SCORE = 0";
     }
 
-  function f_argh() {
+  function f_argh() { /* L'animation de fin*/
     if (argh === 1) {
       document.styleSheets[0].cssRules[0].style.transform = "rotate("+rot+"deg)";
       document.styleSheets[0].cssRules[0].style.height = h + "px";
@@ -80,7 +80,7 @@
     }
   }
 
-  function f_move(event) {
+  function f_move(event) {   /* fonction de déplacement du chat*/
       if (mini_jeu === 1) {
         var ArrowPress = event.key;
         if (ArrowPress === "ArrowUp") {
@@ -95,7 +95,7 @@
       }
     }
 
-  function f_meteorite() {
+  function f_meteorite() { /* fonction qui gère les météorites*/
       x = x - x_move;
       if (x < -200) {
         x_move += 4;
@@ -105,13 +105,13 @@
         document.styleSheets[0].cssRules[1].style.top = y_m + "px";
       }
       document.styleSheets[0].cssRules[1].style.left = x + "px";
-      if ( (x<180 && x>-100) && (y_m+120 > y) && (y_m < y+80) ) {
+      if ( (x<180 && x>-100) && (y_m+120 > y) && (y_m < y+80) ) {  /* si une météorite touche le chat*/
         argh = 1;
 
       }
     }
 
-  function f_meteorite2() {
+  function f_meteorite2() {  /* fonction qui gère les météorites*/
       x2 = x2 - x_move;
       if (x2 < -200) {
         x2 = larg;
@@ -119,13 +119,13 @@
         document.styleSheets[0].cssRules[4].style.top = y_m2 + "px";
       }
       document.styleSheets[0].cssRules[4].style.left = x2 + "px";
-      if ( (x2<180 && x2>-100) && (y_m2+120 > y && y_m2 < y+80)) {
+      if ( (x2<180 && x2>-100) && (y_m2+120 > y && y_m2 < y+80)) {  /* si une météorite touche le chat*/
         argh =1;
 
       }
     }
 
-  function f_pizza() {
+  function f_pizza() {  /* fonction qui gère les pizza*/
       document.styleSheets[0].cssRules[5].style.top = y_m3 + "px";
       x3 = x3 - x_move;
       if (x3 < -200) {
@@ -134,7 +134,7 @@
         document.styleSheets[0].cssRules[5].style.top = y_m3 + "px";
       }
       document.styleSheets[0].cssRules[5].style.left = x3 + "px";
-      if ( (x3<190 && x3>-100) && ( y_m3+50 > y && y_m3 < y+150 ) && argh === 0) {
+      if ( (x3<190 && x3>-100) && ( y_m3+50 > y && y_m3 < y+150 ) && argh === 0) { /* si une pizza touche le chat*/
         pizza += 1;
         document.getElementById("score").innerHTML = "SCORE = " + pizza;
         x3 = larg;
@@ -143,21 +143,13 @@
       }
     }
 
-  function Up() {
-    y = y - 3*y_move;
+  function Up() { /* Pour les déplacement sur téléphones*/
+    y = y - y_move;
     document.styleSheets[0].cssRules[0].style.top = y + "px";
-    if (y < -100) {
-      y = 0.9*haut;
-      document.styleSheets[0].cssRules[0].style.top = y + "px";
-    }
   }
-  function Down() {
-    y = y + 3*y_move;
+  function Down() { /* Pour les déplacement sur téléphones*/
+    y = y + y_move;
     document.styleSheets[0].cssRules[0].style.top = y + "px";
-    if (y > 0.9*haut) {
-      y = -100;
-      document.styleSheets[0].cssRules[0].style.top = y + "px";
-    }
   }
   </script>
 
@@ -204,10 +196,10 @@ div {
 }
 
 .bouton1 {
-  bottom: 10%;
+  bottom: 100px;
 }
 .bouton2 {
-  bottom: 5%;
+  bottom: 20px;
 }
 
 </style>
