@@ -48,7 +48,7 @@
       document.styleSheets[0].cssRules[4].style.display = "block";
       document.styleSheets[0].cssRules[5].style.display = "block";
       if ( larg < 700 ) {  /*Pour les téléphones */
-        document.styleSheets[0].cssRules[6].style.display = "block";
+        document.styleSheets[0].cssRules[7].style.display = "block";
       }
 
       document.getElementById("tailleEcran").innerHTML = "Largeur = " + (larg+300).valueOf() +" hauteur = " + (haut+300).valueOf() ;
@@ -144,11 +144,11 @@
     }
 
   function Up() { /* Pour les déplacement sur téléphones*/
-    y = y - y_move;
+    y = y - y_move-20;
     document.styleSheets[0].cssRules[0].style.top = y + "px";
   }
   function Down() { /* Pour les déplacement sur téléphones*/
-    y = y + y_move;
+    y = y + y_move+20;
     document.styleSheets[0].cssRules[0].style.top = y + "px";
   }
   </script>
@@ -185,22 +185,20 @@ p {
   height: 150px;
 }
 
-div {
-  display: none;
-  position: absolute;
-  margin-left: 10%;
-  padding: 20px 80% 20px;
-
+.bouton {
+  color: white;
+  margin: 5%;
+  padding: 7% 35%;
   background-color: black;
   border-radius: 20px;
 }
+.touche {
+  width: 95%;
+  position: absolute;
+  bottom: 0;
+  display: none;
+}
 
-.bouton1 {
-  bottom: 100px;
-}
-.bouton2 {
-  bottom: 20px;
-}
 
 </style>
 </head>
@@ -216,8 +214,10 @@ div {
 <img class="meteorite2" src="meteorite2.gif" />
 <img class="pizza" src="pizza.gif" />
 
-<div class="bouton1" onclick="Up()">↑</div>
-<div class="bouton2" onclick="Down()">↓</div>
+<div class="touche">
+  <div class="bouton" onclick="Up()">↑</div>
+  <div class="bouton" onclick="Down()">↓</div>
+</div>
 
 </body>
 </html>
