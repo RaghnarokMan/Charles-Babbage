@@ -143,13 +143,21 @@
       }
     }
 
-  function Up() { /* Pour les déplacement sur téléphones*/
-    y = y - y_move-20;
+    function Up() {
+    y = y - 3*y_move;
     document.styleSheets[0].cssRules[0].style.top = y + "px";
+    if (y < -100) {
+      y = 0.9*haut;
+      document.styleSheets[0].cssRules[0].style.top = y + "px";
+    }
   }
-  function Down() { /* Pour les déplacement sur téléphones*/
-    y = y + y_move+20;
+  function Down() {
+    y = y + 3*y_move;
     document.styleSheets[0].cssRules[0].style.top = y + "px";
+    if (y > 0.9*haut) {
+      y = -100;
+      document.styleSheets[0].cssRules[0].style.top = y + "px";
+    }
   }
   </script>
 
