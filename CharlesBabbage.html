@@ -54,256 +54,256 @@
     timerId = setInterval('argh()', 100);
   }
   function argh() {   /* fonction pour les changement de couleur de l'easter egg*/
-      document.styleSheets[0].cssRules[5].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
-      document.styleSheets[0].cssRules[6].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
-      document.styleSheets[0].cssRules[7].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
-      document.styleSheets[0].cssRules[9].style.backgroundColor = "#" + String(Math.floor(Math.random()*1000000));
-      document.styleSheets[0].cssRules[3].style.color = "#" + String(Math.floor(Math.random()*1000000));
-      document.styleSheets[0].cssRules[2].style.color = "#" + String(Math.floor(Math.random()*1000000));
+      document.styleSheets[0].cssRules[5].style.backgroundColor = "rgb(" + Math.floor(Math.random() * 255)+ "," + Math.floor(Math.random() * 255) + ","+ Math.floor(Math.random() * 255) + ")";
+      document.styleSheets[0].cssRules[6].style.backgroundColor = "rgb(" + Math.floor(Math.random() * 255)+ "," + Math.floor(Math.random() * 255) + ","+ Math.floor(Math.random() * 255) + ")";
+      document.styleSheets[0].cssRules[7].style.backgroundColor = "rgb(" + Math.floor(Math.random() * 255)+ "," + Math.floor(Math.random() * 255) + ","+ Math.floor(Math.random() * 255) + ")";
+      document.styleSheets[0].cssRules[9].style.backgroundColor = "rgb(" + Math.floor(Math.random() * 255)+ "," + Math.floor(Math.random() * 255) + ","+ Math.floor(Math.random() * 255) + ")";
+      document.styleSheets[0].cssRules[3].style.color = "rgb(" + Math.floor(Math.random() * 255)+ "," + Math.floor(Math.random() * 255) + ","+ Math.floor(Math.random() * 255) + ")";
+      document.styleSheets[0].cssRules[2].style.color = "rgb(" + Math.floor(Math.random() * 255)+ "," + Math.floor(Math.random() * 255) + ","+ Math.floor(Math.random() * 255) + ")";
   }
 
 
 </script>
 <style>
 
-body {
-  margin: 0;
-  font-family: georgia, monospace, sans-serif;
-  background-size: 40%;
-}
-p { /* mise en forme du texte simple */
-  margin-bottom: 0px;
-}
-h1 { /* mise en forme des titres */
-  font-size:25px;
-  margin-left: 30px;
-  font-weight: bold;
-  color: #000055;
-}   /*ne pas bouger ou rajouter de classes ou balise au dessus*/
-h3 {  /* mise en forme des sous-titres */
-  margin-left: 20px;
-  font-weight: bold;
-  color: #000077;
-}   /*ne pas bouger ou rajouter de classes ou balise au dessus*/
-img.bande { /* l'imge du haut */
-  background-size: cover;
-  height=100px
-}
-
-.dropdown a:hover, .item a:hover {  /* rassemble les couleurs */
-  background-color: #000055;
-  color: white;
-}
-.item a, .dropdown a, .navbar, .navbar_responsive {
-  background-color: #222;
-  color: white;
-}
-.dropdown a .contenu, .contenu, .contenu a, .contenu a:hover, .footer {
-  background-color: #f1f1f1;
-  color: black;
-}
-.contenu a:hover {
-  background-color: white;
-}
-.article {  /* la page de contenu */
-  background-color: white;
-  padding: 40px;
-  margin: 10px 20% 40px;
-  border-radius: 20px;
-}
-
-@media only screen and (min-width: 601px) {   /* la version ordinateur du menu*/
-  .navbar {
-    position: sticky;
-    top: 0;
-    width: 100%;
-  }/*barre de navigation*/
-  .item a, .dropdown a{ /* pour chaque lien du menu */
-    display: inline-block;
-    position: relative;
-    font-size: 20px;
-    padding: 16px;
-    font-size: 16px;
-    text-decoration: none;
-    border-radius: 10px;
+  body {
+    margin: 0;
+    font-family: georgia, monospace, sans-serif;
+    background-size: 40%;
   }
-  .item, .dropdown {
-    display: inline-block;
-    position: relative;
+  p {
+    margin-bottom: 0px;
+  }
+  h1 {
+    font-size:25px;
+    margin-left: 30px;
+    font-weight: bold;
+    color: #000055;
+  }   /*ne pas bouger ou rajouter de classes ou balise au dessus*/
+  h3 {
+    margin-left: 20px;
+    font-weight: bold;
+    color: #000077;
+  }   /*ne pas bouger ou rajouter de classes ou balise au dessus*/
+  img.bande {
+    background-size: cover;
+    height=100px
   }
 
-  .contenu { /* le contenu de chaque lien */
-    display:  none;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    border-radius: 10px;
+  .dropdown a:hover, .item a:hover {
+    background-color: #000055;
+    color: white;
   }
-  .dropdown:hover > .contenu {/*quand on passe la souris sur contenu descendant de dropdown dans le menu */
-    position: absolute;
-    display: block;
+  .item a, .dropdown a, .navbar, .navbar_responsive {
+    background-color: #222;
+    color: white;
   }
-  .contenu a{ /* pour les liens */
-    border-radius: 10px;
-    width: 77%;
+  .dropdown a .contenu, .contenu, .contenu a, .contenu a:hover, .footer {
+    background-color: #f1f1f1;
+    color: black;
   }
-  .contenu a:hover {/*quand on passe la souris sur une balise a de contenu (liens)*/
-    border-radius: 10px;
+  .contenu a:hover {
+    background-color: white;
   }
-  .contenu > .dropdown > .contenu{
-    right: 83px;
-    /*left: 0;*/
-    top: 0;
-  }/*si quelqu'un arrive a positionner le deuxième contenu au bon endroit, qu'il me le dise*/
-  img.art {
-    height: 200px;
-  }
-  .navbar_responsive {
-    display: none;
-  }  /*barre de navigation*/
-}
-
-@media only screen and (max-width: 600px) { /* version pour téléphones*/
   .article {
-    margin: 0px 0% 40px;
-    border-radius: 0px;
-  }
-  img.art {  /* image de classe art */
-    width: 100%;
-    height: auto;
-  }
-  .navbar {
-    display: none;
-  }
-  .navbar_responsive {
-    display: block;
-    position: sticky;
-    top: 0;
-    width: 100%;
+    background-color: white;
+    padding: 40px;
+    margin: 10px 20% 40px;
+    border-radius: 20px;
   }
 
-  .item, .dropdown {
-    width: 100%;
+  @media only screen and (min-width: 601px) {   /* la version ordinateur*/
+    .navbar {
+      position: sticky;
+      top: 0;
+      width: 100%;
+    }/*barre de navigation*/
+    .item a, .dropdown a{
+      display: inline-block;
+      position: relative;
+      font-size: 20px;
+      padding: 16px;
+      font-size: 16px;
+      text-decoration: none;
+      border-radius: 10px;
+    }
+    .item, .dropdown {
+      display: inline-block;
+      position: relative;
+    }
+
+    .contenu {
+      display:  none;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+      border-radius: 10px;
+    }
+    .dropdown:hover > .contenu {/*quand on passe la souris sur contenu descendant de dropdown*/
+      position: absolute;
+      display: block;
+    }
+    .contenu a{
+      border-radius: 10px;
+      width: 77%;
+    }
+    .contenu a:hover {/*quand on passe la souris sur une balise a de contenu*/
+      border-radius: 10px;
+    }
+    .contenu > .dropdown > .contenu{
+      right: 83px;
+      /*left: 0;*/
+      top: 0;
+    }/*si quelqu'un arrive a positionner le deuxième contenu au bon endroit, qu'il me le dise*/
+    img.art {
+      height: 200px;
+    }
+    .navbar_responsive {
+      display: none;
+    }  /*barre de navigation*/
   }
-  .item a, .dropdown a{
-    display: block;
-    position: relative;
-    font-size: 20px;
+
+  @media only screen and (max-width: 600px) { /* version pour téléphones*/
+    .article {
+      margin: 0px 0% 40px;
+      border-radius: 0px;
+    }
+    img.art {
+      width: 100%;
+      height: auto;
+    }
+    .navbar {
+      display: none;
+    }
+    .navbar_responsive {
+      display: block;
+      position: sticky;
+      top: 0;
+      width: 100%;
+    }
+
+    .item, .dropdown {
+      width: 100%;
+    }
+    .item a, .dropdown a{
+      display: block;
+      position: relative;
+      font-size: 20px;
+      padding: 16px;
+      font-size: 16px;
+      text-decoration: none;
+    }
+    .item, .dropdown {
+      display: inline-block;
+      position: relative;
+    }
+    .contenu {
+      display:  none;
+      box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    }
+    .dropdown:hover > .contenu {/*quand on passe la souris sur contenu descendant de dropdown*/
+      position: relative;
+      display: block;
+    }
+  }
+
+  .footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    padding: 5px;
+    height: 20px;
+    box-shadow: 0px -5px 5px;
+    transition: height 1s, padding 1s;
+  }
+  .footer:hover {
     padding: 16px;
-    font-size: 16px;
-    text-decoration: none;
+    height: 100px;
   }
-  .item, .dropdown {
-    display: inline-block;
-    position: relative;
+  .mouhahaaa {
+    border-radius: 8px;
+    background-color: #ff9999;
+    float: right;
+    margin-right: 50px;
+    cursor: help;
   }
-  .contenu {
-    display:  none;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  .mouhahaaa:hover {
+    transform: translate(-150px);
   }
-  .dropdown:hover > .contenu {/*quand on passe la souris sur contenu descendant de dropdown*/
-    position: relative;
-    display: block;
-  }
-}
 
-.footer {  
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  padding: 5px;
-  height: 20px;
-  box-shadow: 0px -5px 5px;
-  transition: height 1s, padding 1s; /* transition quand on passe la souris sur le pied de page */
-}
-.footer:hover { /* quand la souris passe sur le pied de page */
-  padding: 16px;
-  height: 100px;
-}
-.mouhahaaa {  /* classe d'un easter egg */
-  border-radius: 8px;
-  background-color: #ff9999;
-  float: right;
-  margin-right: 50px;
-  cursor: help;
-}
-.mouhahaaa:hover {
-  transform: translate(-150px);
-}
+  .icone_menu {
+    width: 30px;
+  }
 
-.icone_menu {
-  width: 30px;
-}
-
-#groar {  /* les ID d'un easter egg */
-  height: 10px;
-  position: absolute;
-  right: 0px;
-  top: 500px;
-  transform: rotate(-90deg);
-  transition: height 1s, right 1s;
-}
-#groar:hover {
-  height: 100px;
-  right: -35px;
-}
-#grooooaaar {
-  height: 15px;
-  position: absolute;
-  left: 0px;
-  top: 1500px;
-  transform: rotate(90deg);
-  transition: height 1s, left 1s;
-}
-#grooooaaar:hover {
-  height: 100px;
-  left: -35px;
-}
+  #groar {
+    height: 10px;
+    position: absolute;
+    right: 0px;
+    top: 500px;
+    transform: rotate(-90deg);
+    transition: height 1s, right 1s;
+  }
+  #groar:hover {
+    height: 100px;
+    right: -35px;
+  }
+  #grooooaaar {
+    height: 15px;
+    position: absolute;
+    left: 0px;
+    top: 1500px;
+    transform: rotate(90deg);
+    transition: height 1s, left 1s;
+  }
+  #grooooaaar:hover {
+    height: 100px;
+    left: -35px;
+  }
 </style>
 </head>
-<link rel="icon" href="logo.png" /> <!-- poour l'icone de l'onglet -->
+<link rel="icon" href="logo.png" />
 <body onload="f_fond()" >
 <p style="margin-bottom: 0px;"><img class="bande" src="bande.png" width=100%></p>
 
-<div class="navbar">  <!-- menu -->
-  <div class="item"> <!-- 1er lien du menu -->
+<div class="navbar">
+  <div class="item">
     <a href="accueil.html">Accueil</a>
   </div>
 
-  <div class="dropdown"> <!-- 2eme lien du menu -->
+  <div class="dropdown">
     <a>Voir aussi</a>
     <div class="contenu" >
       <a href="AdaLovelace.html">Ada Lovelace</a>
     </div>
   </div>
 
-  <div class="dropdown"> <!-- 3eme lien du menu -->
+  <div class="dropdown">
     <a>Sommaire</a>
-    <div class="contenu" > <!-- chaque points du sommaire -->
+    <div class="contenu" >
       <a href="#">Introduction</a>
       <a href="#histoire">Histoire</a>
       <a href="#informatique">Liens avec l'informatique'</a>
     </div>
   </div>
 
-  <div class="dropdown" style="float: right;"> <!-- ultime "lien" du menu -->
+  <div class="dropdown" style="float: right;">
     <a>Parametres</a>
     <div class="contenu" >
-      <a onclick="f_fond()">Fond</a> <!-- active la fonction de changement de fond -->
+      <a onclick="f_fond()">Fond</a>
       <div class="dropdown" >
         <a>Palette</a>
         <div class="contenu">
-          <a onclick="f_couleurOriginal()">Thème clair</a>  <!-- active la fonction de changement de couleur -->
-          <a onclick="f_couleurSombre()">Thème sombre</a>  <!-- active la fonction de changement pour les couleurs originel -->
-          <a onclick="f_couleurPersonnalisee()">Couleurs personnalisés</a>  <!-- active la fonction de changement pour les couleurs sombres -->
+          <a onclick="f_couleurOriginal()">Thème clair</a>
+          <a onclick="f_couleurSombre()">Thème sombre</a>
+          <a onclick="f_couleurPersonnalisee()">Couleurs personnalisés</a>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div class="navbar_responsive"> <!-- menu pour telephone, similaire a la version ordi -->
+<div class="navbar_responsive">
 
   <div class="dropdown">
-    <a><img src="hamburger_menu.png" class="icone_menu"> </a> <!-- ajoute un petit logo burger -->
+    <a><img src="hamburger_menu.png" class="icone_menu"> </a>
 
     <div class="contenu">
 
@@ -345,12 +345,12 @@ img.bande { /* l'imge du haut */
   </div>
 </div>
 
-<div class="article"> <!-- ajoute une page -->
+<div class="article">
   <h1 style="font-size:30px;">Charles Babbage</h1>
 
-  <img src="Charles-Babbage.png" class="art" style="float: right;" /><!-- lien pour une image -->
+  <img src="Charles-Babbage.png" class="art" style="float: right;" />
 
-  <a id="introduction"> <!-- contenu... -->
+  <a id="introduction">
   </a><h1>Introduction</strong></h1>
 
   <p>Charles Babbage, né le 26 décembre 1791 et mort le 18 octobre 1871 à Londres, est un polymathe, mathématicien et inventeur visionnaire britannique du xixe siècle qui fut l'un des principaux précurseurs de l'informatique.
@@ -387,12 +387,12 @@ img.bande { /* l'imge du haut */
   Il caresse ainsi cette idée depuis 1812. Deux facteurs semblent avoir contribué à sa décision de concevoir un tel appareil : sa connaissance des tables de logarithmes, et le travail déjà commencé dans ce domaine par Blaise Pascal (avec la « Pascaline ») et Gottfried Leibniz (multiplicatrice). Au cours de la conception de la machine, il entre en correspondance avec une jeune femme, Ada Lovelace : citée par Charles Babbage dans ses comptes-rendus de 1843, elle apparaît comme à l'origine de la résolution d'un algorithme basé sur une suite de Bernoulli. C'est d’ailleurs sous son nom, « Lady Ada », qu'elle publie le premier algorithme destiné à être exécuté sur une machine : la machine à différences de Charles Babbage. Dans une correspondance avec Sir Humphry Davy en 1822, Charles Babbage y discute de certaines applications d'une telle machine, notamment pour le calcul et l'impression des tables mathématiques, et y discute aussi des principes d'une machine à calculer.</p>
 </div>
 
-<img src="groar_loop.gif" id="groar"/>  <!-- quelque easters eggs -->
+<img src="groar_loop.gif" id="groar"/>
 <img src="grooooaaar.gif" id="grooooaaar"/>
 
-<div class="footer"><b>FAURE Joshua</b>  <!-- le pied de page -->
-  <button onclick="Mouhahaaa()" class="mouhahaaa" id="test">DON'T CLICK ME !</button><br> <!-- encors un easter egg -->
-  <div style="padding-top:10px;"> <!-- puisqu'on doit rajouter des tableaux et des listes -->
+<div class="footer"><b>FAURE Joshua</b>
+  <button onclick="Mouhahaaa()" class="mouhahaaa" id="test">DON'T CLICK ME !</button><br>
+  <div style="padding-top:10px;">
     <div style="display: inline-block;">
       <table style="margin-top: :10px;">
         <tr>
@@ -409,14 +409,14 @@ img.bande { /* l'imge du haut */
       <ul style="margin-bottom: 0px;">
         <li>les <i>listes</i></li>
         <li>non plus </li>
-      </ul> <!-- fait ! -->
+      </ul>
     </div>
     <div style="display: inline-block; background-color: lightgrey; border-radius: 10px; margin-left: 20px;">
-      <a href="https://fr.wikipedia.org/wiki/Charles_Babbage">Source</a> <!-- et la source -->
+      <a href="https://fr.wikipedia.org/wiki/Charles_Babbage">Source</a>
     </div>
   </div>
 
-  <img src="argh.gif"></img>  <!-- encors un easter egg -->
+  <img src="argh.gif"></img>
 
 </div>
 </body>
